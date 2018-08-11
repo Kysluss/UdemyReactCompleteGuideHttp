@@ -8,7 +8,7 @@ import axios from 'axios';
 // You can set a base URL globally for your application
 // This will allow your other components to not have to worry about the path to the web service
 // Instead you can just access things through /ResourceName without the whole URL
-//axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
 // You can also set authorization tokens and other common headers
 // These are global headers for all requests

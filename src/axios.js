@@ -7,6 +7,7 @@ import axios from 'axios';
 // The argument is an object of configuration elements
 // This instance will inherit any global configuration changes we made in index.js
 // It will merge the supplied configuration with the global configuration
+// Instances do not inherit interceptors
 const instance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com'
 });
