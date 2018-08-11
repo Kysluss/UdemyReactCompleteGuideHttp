@@ -10,6 +10,14 @@ import axios from 'axios';
 // Instead you can just access things through /ResourceName without the whole URL
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
+// You can also set authorization tokens and other common headers
+// These are global headers for all requests
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
+
+// You can set request type specific headers
+// application/json is the default, but this is here just to show this
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+
 // You can register an interceptor for requests
 // The first argument is a function that can modify the request configuration
 // The second argument is a function for errors when setting up the request
