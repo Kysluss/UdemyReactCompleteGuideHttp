@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Posts from '../Posts/Posts';
+import Posts from './Posts/Posts';
 
 import './Blog.css';
 
