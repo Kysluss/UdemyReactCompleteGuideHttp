@@ -8,12 +8,20 @@ class FullPost extends Component {
         loadedPost: null
     }
     componentDidMount() {
+        this.loadData();
+    }
+
+    componentDidUpdate() {
+        this.loadData();
+    }
+
+    loadData() {
         if(this.props.match.params.id) {
             // If we don't do this check, it will execute an infinite loop because we are calling setState
             // To get around this, we check if loadedPost hasn't been set yet
             // If loadedPost does exist already, we need to make sure that the id has changed
             // If the id hasn't changed, we don't need to execute the http request
-            if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
+            if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id != this.props.match.params.id)) {
                 axios.get('/posts/' + this.props.match.params.id)
                     .then(response => {
                         this.setState({
@@ -25,7 +33,7 @@ class FullPost extends Component {
     }
 
     deletePostHandler = () => {
-        axios.delete('/posts/' + this.props.id)
+        axios.delete('/posts/' + this.props.match.props.id)
             .then(response => {
                 console.log(response);
             });
@@ -36,7 +44,7 @@ class FullPost extends Component {
 
             // When this.props.id is valid, we execute an asynchronous request
             // Because of this, we need to check if loadedPost exists
-        if(this.props.id) {
+        if(this.props.match.params.id) {
             post = <p style={{textAlign: 'center'}}>Loading...</p>;
         }
         if(this.state.loadedPost) {
