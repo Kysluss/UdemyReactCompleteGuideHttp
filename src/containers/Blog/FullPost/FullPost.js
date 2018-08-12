@@ -7,14 +7,14 @@ class FullPost extends Component {
     state = {
         loadedPost: null
     }
-    componentDidUpdate() {
-        if(this.props.id) {
+    componentDidMount() {
+        if(this.props.match.params.id) {
             // If we don't do this check, it will execute an infinite loop because we are calling setState
             // To get around this, we check if loadedPost hasn't been set yet
             // If loadedPost does exist already, we need to make sure that the id has changed
             // If the id hasn't changed, we don't need to execute the http request
             if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
-                axios.get('/posts/' + this.props.id)
+                axios.get('/posts/' + this.props.match.params.id)
                     .then(response => {
                         this.setState({
                             loadedPost: response.data
